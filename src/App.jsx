@@ -2,8 +2,10 @@ import Navbar from "./components/navbar";
 import Banner from "./components/Banner";
 import Feedback from "./components/Feedback";
 import Footer from "./components/Footer";
-import Course from "./components/Course";
-import courses from "./data/courses";
+//import Course from "./components/Course";
+//import courses from "./data/courses";
+import Products from "./components/Products";
+import products from "./data/products";
 
 function App() {
 
@@ -13,20 +15,35 @@ function App() {
     <Banner></Banner>
     <Feedback></Feedback>
     <Footer></Footer>
-    <div className="d-flex flex-wrap">
+    
+   <div className="d-flex flex-wrap">
       {
-        courses.map((course) => {
+       /* ---- Course Details----
+         courses.map((course) => {
           return(
             <Course price={course.price}
-             trainer={course.trainer} 
+             //trainer={course.trainer} 
              duration={course.duration}
              description={course.shortDescription}>
               {course.courseName}
             </Course>
           )
-        })
+        })*/
+
+      //---Product Details----
+      products.map((products) => {
+        return(
+          
+          <Products image={products.images}
+          price={products.price}
+          description={products.description}>
+            {products.title}
+          </Products>
+        )
+      })
+
       }
-    </div>
+    </div> 
     
   </div>
   );
