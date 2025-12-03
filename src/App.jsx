@@ -1,50 +1,33 @@
-import Navbar from "./components/navbar";
-import Banner from "./components/Banner";
-import Feedback from "./components/Feedback";
-import Footer from "./components/Footer";
-//import Course from "./components/Course";
-//import courses from "./data/courses";
-import Products from "./components/Products";
-import products from "./data/products";
+import{ Link ,Outlet } from "react-router-dom"
+import "./App.css";
 
 function App() {
 
   return (
-  <div className="border border-2 border-danger p-2">
-    <Navbar></Navbar>
-    <Banner></Banner>
-    <Feedback></Feedback>
-    <Footer></Footer>
-    
-   <div className="d-flex flex-wrap">
-      {
-       /* ---- Course Details----
-         courses.map((course) => {
-          return(
-            <Course price={course.price}
-             //trainer={course.trainer} 
-             duration={course.duration}
-             description={course.shortDescription}>
-              {course.courseName}
-            </Course>
-          )
-        })*/
-
-      //---Product Details----
-      products.map((products) => {
-        return(
-          
-          <Products image={products.images}
-          price={products.price}
-          description={products.description}>
-            {products.title}
-          </Products>
-        )
-      })
-
-      }
-    </div> 
-    
+  <div>
+    <ul id = 'nav'>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/counter">Counter</Link>
+      </li>
+      <li>
+        <Link to="/todolist">Todolist</Link>
+      </li>
+      <li>
+        <Link to="/gallery">Gallery</Link>
+      </li>
+      <li>
+        <Link to="/products">Products</Link>
+      </li>
+      <li>
+        <Link to="/recipes">Recipes</Link>
+      </li>
+    </ul>
+    <div className="border border-danger p-3 m-3">
+      <Outlet></Outlet>
+    </div>
   </div>
   );
 }
