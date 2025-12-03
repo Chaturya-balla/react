@@ -22,7 +22,7 @@ function RecipeDetails() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>Recipe Details : {recipe.name}</h1>
+      <h1 style={{color:"brown"}}> {recipe.name}</h1>
 
       <div style={{ display: "flex", gap: "30px", marginTop: "20px" }}>
         
@@ -33,7 +33,19 @@ function RecipeDetails() {
             alt={recipe.name}
             style={{ width: "300px", borderRadius: "10px" }}
           />
+          
+           {/* Navigation buttons */}
+          <div style={{ marginTop: "30px" }}>
+          <button onClick={goPrevious} disabled={parseInt(id) === 1}>
+            Previous
+          </button>
+  
+          <button onClick={goNext} style={{ marginLeft: "20px" }}>
+            Next
+          </button>
+          </div>    {/*buttons div*/}
         </div>
+
 
         {/* Right Side – Recipe Info */}
         <div style={{ maxWidth: "600px" }}>
@@ -51,16 +63,6 @@ function RecipeDetails() {
             Cuisine: <span style={{ color: "green" }}>{recipe.cuisine}</span>
           </h3>
 
-          {/* Navigation buttons */}
-          <div style={{ marginTop: "30px" }}>
-          <button onClick={goPrevious} disabled={parseInt(id) === 1}>
-            Previous
-          </button>
-  
-          <button onClick={goNext} style={{ marginLeft: "20px" }}>
-            Next
-          </button>
-          </div>    {/*buttons div*/}
         </div>  {/*right-side recipe*/}
       </div>  {/*flex div*/}
     </div>   /*overall recipe dtetails div */
