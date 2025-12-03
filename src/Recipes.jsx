@@ -22,7 +22,7 @@ function Recipes(){
                     );
                 })}
             </ul>
-            <div>
+            <div  className="border border-5 border-success p-3 m-3">
                 <Outlet></Outlet>
             </div>
         </div>
