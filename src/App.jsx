@@ -1,15 +1,20 @@
-import './App.css'
-import Counter from './features/counter/Counter';
-import Todolist from './features/todolist/Todolist';
+import { Link, Outlet } from "react-router-dom";
+import "./App.css";
+import Counter from "./features/counter/Counter";
+import Products from "./features/products/Products";
+import Todolist from "./features/todolist/Todolist";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-  <div>
-    <h1 className="border border-2 m-2 p-2">React Component</h1>
-    <Counter></Counter>
-    <Todolist></Todolist>
-  </div>
+    <div className="border border-primary border-2 m-2 p-2">
+      <h1>Welcome to React</h1>
+      <Navbar></Navbar>
+      <div>
+        <Outlet></Outlet>
+      </div>
+    </div>
   );
 }
 
-export default App
+export default App;

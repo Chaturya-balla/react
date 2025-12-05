@@ -6,7 +6,7 @@ function Counter() {
   var count = useSelector((state) => state.cntR.counter);
   var dispatch = useDispatch();
   return (
-    <div className="border border-info border-2 m-2 p-2">
+    <div className="border border-secondary border-2 m-2 p-2">
       <h1>Counter:{count}</h1>
       <button
         onClick={() => {
