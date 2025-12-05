@@ -19,6 +19,9 @@ function Navbar() {
         <li>
           <Link to="/imdb">Imdb</Link>
         </li>
+         <li>
+          <Link to="/todos">Todos</Link>
+        </li>
       </ul>
     </div>
   );

@@ -11,6 +11,7 @@ import Products from "./features/products/Products.jsx";
 import Imdb from "./features/imdb/Imdb.jsx";
 import ShowDetails from "./features/imdb/ShowDetails.jsx";
 import CrewDetails from "./features/imdb/CrewDetails.jsx";
+import Todos from "./features/todos/Todos.jsx";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/crewDetails/:nid",
         element: <CrewDetails></CrewDetails>,
+      },
+       {
+        path: "/todos",
+        element: <Todos></Todos>,
       },
     ],
   },
