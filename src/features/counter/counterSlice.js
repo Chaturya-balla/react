@@ -3,23 +3,22 @@ const initialState = {
     counter:0
 }
 
-export const counterSlice= createSlice({
+export const counterSlice = createSlice({
     name:"counter",
     initialState,
     reducers:{
-        increment:(state)=>{
+        increment:(state) => {
             state.counter++
         },
-        decrement:(state)=>{
+        decrement:(state) =>{
             state.counter--
         },
-        reset:(state)=>{
+        reset:(state) => {
             state.counter=initialState.counter
         }
     }
 })
 
-export var {increment,decrement,reset} = counterSlice.actions
-
-const counterReducer = counterSlice.reducer;
+export var { increment,decrement,reset} =counterSlice.actions
+const counterReducer=counterSlice.actions
 export default counterReducer;

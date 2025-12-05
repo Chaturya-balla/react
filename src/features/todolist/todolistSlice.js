@@ -1,17 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState = {
-    todos:['Go to kerala','Practice Coding','Book tickets']
+const initialState ={
+    todos:['plan trip','book tickets','practice coding']
 }
+
 export const todolistSlice = createSlice({
     name:"todolist",
     initialState,
     reducers:{
-        addTodo:(state,action) => {
+         addTodo:(state,action) => {
             state.todos.push(action.payload)
-        },
+         },
     },
 })
 
-export const {addTodo} = todolistSlice.actions;
-var todoReducer = todolistSlice.reducer;
+export const {addTodo} = todolistSlice.actions
+const todoReducer = todolistSlice.reducer;
 export default todoReducer
