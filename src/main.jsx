@@ -12,6 +12,7 @@ import Imdb from "./features/imdb/Imdb.jsx";
 import ShowDetails from "./features/imdb/ShowDetails.jsx";
 import CrewDetails from "./features/imdb/CrewDetails.jsx";
 import Todos from "./features/todos/Todos.jsx";
+import Login from "./components/Login.jsx";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
        {
         path: "/todos",
         element: <Todos></Todos>,
+      },
+      {
+        path:"/login",
+        element:<Login></Login>,
       },
     ],
   },
