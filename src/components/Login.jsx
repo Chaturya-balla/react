@@ -3,10 +3,12 @@ import React from "react"
 import { useLoginMutation } from "../services/userApi";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../features/user/userSlice";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
     var [loginFn] = useLoginMutation()
     var dispatch = useDispatch()
+    var navigateFn = useNavigate()
     var loginForm = useFormik({
         initialValues:{
             username:"",
@@ -15,6 +17,7 @@ function Login() {
         onSubmit: (values) => {
             loginFn(values).then(({ data })=>{
                 dispatch(updateUser(data))
+                navigateFn("/");
             })
         }
     });

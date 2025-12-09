@@ -5,13 +5,37 @@ export const todosApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3500/todos" }),
   endpoints: (builder) => ({
     getAllTodos: builder.query({
-      query: () => `/getAllTodos`,
+      query: () => {
+        return {
+          url:`/getAllTodos`,
+          method: "GET",
+          headers:{
+            token:window.localStorage.getItem("token")
+          }
+        }
+      }
     }),
+
+    getTodosByUserName: builder.query({
+      query: (username) => {
+        return {
+          url:`/getTodosByUserName/${username}`,
+          method: "GET",
+          headers:{
+            token:window.localStorage.getItem("token")
+          }
+        }
+      }
+    }),
+
     addNewTodo: builder.mutation({
       query: (ntd) => {
         return {
-          url: "/",
+          url: "/addNewTodo",
           method: "POST",
+          headers:{
+            token:window.localStorage.getItem("token")
+          },
           body: ntd,
         };
       },
@@ -19,8 +43,11 @@ export const todosApi = createApi({
     deleteTodo: builder.mutation({
       query: (id) => {
         return {
-          url: `/${id}`,
+          url: `/deleteTodo/${id}`,
           method: "DELETE",
+          headers:{
+            token:window.localStorage.getItem("token")
+          },
         };
       },
     }),
@@ -29,6 +56,8 @@ export const todosApi = createApi({
 
 export const {
   useGetAllTodosQuery,
+  useGetTodosByUserNameQuery,
+  useLazyGetTodosByUserNameQuery,
   useLazyGetAllTodosQuery,
   useAddNewTodoMutation,
   useDeleteTodoMutation,

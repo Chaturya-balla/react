@@ -2,25 +2,30 @@ import React, { useState } from "react";
 import {
   useAddNewTodoMutation,
   useDeleteTodoMutation,
-  useGetAllTodosQuery,
-  useLazyGetAllTodosQuery,
+  useGetTodosByUserNameQuery,
+  useLazyGetTodosByUserNameQuery,
 } from "../../services/todosApi";
+import { useSelector } from "react-redux";
 
 function Todos() {
-  var { isLoading, data } = useGetAllTodosQuery();
+  var {username} = useSelector(state => state.userR)
+  var { isLoading, data } = useGetTodosByUserNameQuery(username);
   var [addNewTodoFn] = useAddNewTodoMutation();
   var [deleteTodoFn] = useDeleteTodoMutation();
-  var [getLatestTodosFn] = useLazyGetAllTodosQuery();
+  var [getLatestTodosFn] = useLazyGetTodosByUserNameQuery();
   var [ntd, setNtd] = useState("");
   console.log(data);
   function addNewTodo() {
     addNewTodoFn({
       title: ntd,
       status: "notcompleted",
+      username: username,
+      remarks:"Nothing"
     }).then(() => {
-      getLatestTodosFn();
+      getLatestTodosFn(username);
     });
   }
+
   return (
     <div>
       <h1>Todos</h1>
@@ -37,11 +42,11 @@ function Todos() {
         <ul>
           {data?.map((todo) => {
             return (
-              <li>
+              <li key={ todo.id }>
                 {todo.title}
                 <button
                   onClick={() => {
-                    deleteTodoFn(todo.id).then(() => getLatestTodosFn());
+                    deleteTodoFn(todo.id).then(() => getLatestTodosFn(username));
                   }}
                 >
                   <i className="fa-solid fa-trash"></i>
